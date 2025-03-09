@@ -7,6 +7,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
+from rest_framework.permissions import IsAuthenticated
 
 from profiles_api import models
 from profiles_api import permissions
@@ -181,3 +182,21 @@ class UserLoginApiView(ObtainAuthToken):
     
     #renderer_classes - standard setting provided by djrestfmwk
     # to enable the view to be rendered in the browser
+
+class UserProfileFeedViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating profile feed items"""
+    
+    serializer_class = serializers.ProfileFeedItemSerializer
+    authentication_classes = (TokenAuthentication,)
+    queryset = models.ProfileFeedItem.objects.all()
+    permission_classes = (
+        permissions.UpdateOwnStatus,
+        IsAuthenticated
+    )
+    
+    #we wannaset user_profile to read on;y
+    def perform_create(self, serializer):
+        """Sets the user profile to the logged in user"""
+        # get called every time POST request is made to our view set
+        # since token authentication is added to our view set if user has auth-d then request will have user when user is authenticated
+        serializer.save(user_profile=self.request.user)

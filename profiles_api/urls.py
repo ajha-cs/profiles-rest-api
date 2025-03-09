@@ -12,6 +12,7 @@ router = DefaultRouter()
 # used to retrieve urls in our router
 router.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
 router.register('profile',views.UserProfileViewSet)
+router.register('feed',views.UserProfileFeedViewSet)
 # no need to pass basename bcoz we have queryset in the viewset -> drf can figure out the name
 
 urlpatterns = [

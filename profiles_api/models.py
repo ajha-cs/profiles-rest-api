@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin 
 from django.contrib.auth.models import BaseUserManager
+from django.conf import settings
 #Base Classes to oveerride default django user model
 #AbstractBaseUser: Base class for custom user model
 #PermissionsMixin: To get deafult permission
@@ -68,3 +69,21 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         #recommended for all django models -> to get meaningful output
         """Return string representation of our user"""
         return self.email
+
+class ProfileFeedItem(models.Model):
+    """Profile Status Update"""
+    #fk - used to connect one model with other model in django -> to maintain integrity
+    user_profile = models.ForeignKey(
+        #refernce to the user profile model rather than hardcoded it -> settings.AUTH_USER_MODEL
+        settings.AUTH_USER_MODEL,
+        #on_delete - what to do when the user profile is deleted
+        # cascade the change down -> delete the feed item when the user is deleted
+        # or NULL - set the user profile to NULL
+        on_delete=models.CASCADE
+    )
+    status_text = models.CharField(max_length=255)
+    created_on = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        """Return the model as a string"""
+        return self.status_text

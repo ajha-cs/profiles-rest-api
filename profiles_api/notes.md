@@ -64,3 +64,10 @@ http://127.0.0.1/ -> local host address
 28. Adding a Login Functionality -> using TokenAuthnetication -> including tokens in headers while request is made -> add a endpoint to our api that allows you to generate a auth Token -> import ObtainAuthToken -> import apisetttings -> add url to this view to enable it
 29. Test Login API -> give token
 30. Set Token Header using ModHeader extensions -> every request has HTTP header -> add a authorization key with this token -> when dj recives the request check for this token in db -> we'll be passing token in which ever client library - JS(fetch) we're using
+31. User Feed API -> Create a new django model for storing user profile feed items -> import settings.py from django.conf() from profiles_project -> doen
+32. run the migrations -> create a table in db -> To reflect changes -> python manage.py migrate
+33. Register this in django admin -> done
+34. Create a serializer for our profile feed object
+35. Create a viewset for our profile feed items
+36. Test it
+37. Create  a permissions class -> using IsAuthenticatedOrReadOnly
