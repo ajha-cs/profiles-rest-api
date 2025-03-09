@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 # return standard responses when dj called our api view
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
 #status - list of handy http status codes
 # 200 - ok
 # 201 - created
@@ -87,3 +88,62 @@ class HelloApiView(APIView):
         #delete the object
         
         return Response({'method': 'DELETE'})
+    
+class HelloViewSet(viewsets.ViewSet):
+    """Test API ViewSet"""
+    #ViewSet - class that provides functionality to manage models through http methods
+    
+    #list - typically a HTTP GET  to the root linked to the viewset
+    #create - typically a HTTP POST to the root linked to the viewset
+    #retrieve - typically a HTTP GET to a specific object linked to the viewset
+    #update - typically a HTTP PUT to a specific object linked to the viewset
+    #partial_update - typically a HTTP PATCH to a specific object linked to the viewset
+    
+    serializer_class = serializers.HelloSerializer
+    
+    def list(self,request):
+        """Return a hello message"""
+        # just like above an_apiview here a_viewset
+        
+        a_viewset = [
+            'Uses actions (list, create, retrieve, update, partial_update)',
+            'Automatically maps to URLs using Routers',
+            'Provides more functionality with less code',
+        ]
+        
+        return Response({'message': 'Hello!', 'a_viewset': a_viewset})
+    
+    def create(self, request):
+        """Create a new Hello Message"""
+        
+        serializer = self.serializer_class(data=request.data)
+        
+        if serializer.is_valid():
+            name = serializer.validated_data.get('name')
+            message = f'Hello {name}!'
+            return Response({'message': message})
+        else:
+            return Response(
+                serializer.errors, 
+                status=status.HTTP_400_BAD_REQUEST
+                )
+            
+    def retrieve(self, request, pk=None):
+        """Handle getting an object by its ID"""
+        
+        return Response({'method': 'GET'})
+    
+    def update(self, request, pk=None):
+        """Handle updating an object"""
+        
+        return Response({'method': 'PUT'})
+    
+    def partial_update(self, request, pk=None):
+        """Handle updating part of an object"""
+        
+        return Response({'method':'PATCH'})
+    
+    def destroy(self, request, pk=None):
+        """Handle removing an object"""
+        
+        return Response({'method':'DELETE'})

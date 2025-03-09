@@ -23,7 +23,7 @@ http://127.0.0.1/ -> local host address
     13.3. Run our migration -> python manage.py migrate -> run all migrations -> create
     all required models -> auth system, tables in our db
 14. Creating our superuser -> enabling django admin -> tool to create admin website for your project and let us manage (inspect-modify) our db models -> create a superuser -> python mnanage.py createsuperuser
-15. Enabel django-admin for our user profile model (by deafult on for all new projects) -> need to register for new models -> to use django-admin for our user profile model -> go to admin .py (auto created while new app is created)
+15. Enable django-admin for our user profile model (by default on for all new projects) -> need to register for new models -> to use django-admin for our user profile model -> go to admin .py (auto created while new app is created)
 16. 3 sections -> 3 apps -> authtoken app (comes out of djangorest fwmrk) -> authentication and authorization (comes out of django) -> profiles_api app (with the models we define -- we can override this behavior too) 
 17. API Views -> dj rest frmwrk offers couple of helper classes to create our api endpoints
     17.1. APIView -> most basic view to build our api -> describe logic to make api endpoints -> apiview (allow us to define the func that matches the standard HTTP method - GET, PUT, POST, PATCH, DELETE) -> allows us to customise the function for each HTTP on api url -> most control ovr the logic -> perfect for implementing the complex logic -> like calling other apis or working with local files -> USE - 
@@ -41,4 +41,12 @@ http://127.0.0.1/ -> local host address
     12. PUT, Patch - Raw data in pg, Delete
     13. 
     vs 
-    17.2. ViewSet 
+    17.2. ViewSet -> Allows us to write logic for endpoints -> insted of defining func which match to http method -> accept func that maps to common api object action -> list, create, retrieve, update, partial_update, destroy -> takes care of common logic for us -> perfect for writing api that performs standard db opn -> fastest way to make api -> USES
+    1. A simple CRUD over db
+    2. A quick and simple API
+    3. Little to no customization on the logic
+    4. working with standard database structure
+    5. create HelloViewSet class -> import viewsets from restfwk -> done
+    6. set url to point our viewset -> different from apiview -> viewsets - it calls a Router class provided by djrestfmwk to generate different routes available for our viewset -> import include from django.urls -> includeing list of url in url_patterns -> import DefaultRouter restfmwk.routers -> then create a object and register the viewset for the same.
+    7. serializer class -> same one can be used 
+    8. add retrieve, update ... func
