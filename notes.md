@@ -61,4 +61,6 @@ http://127.0.0.1/ -> local host address
 25. Test new permissions
 26. Ability to search profiles -> filter -> import filters -> done
 27. Test Searching Profiles -> ? - to signify first get parameter **?search=Mark**
-28. Adding a Login Functionality -> using TokenAuthnetication -> including tokens in headers while request is made -> add a endpoint to our api that allows you to generate a auth Token -> import ObtainAuthToken -> import apisetttings from 
+28. Adding a Login Functionality -> using TokenAuthnetication -> including tokens in headers while request is made -> add a endpoint to our api that allows you to generate a auth Token -> import ObtainAuthToken -> import apisetttings -> add url to this view to enable it
+29. Test Login API -> give token
+30. Set Token Header using ModHeader extensions -> every request has HTTP header -> add a authorization key with this token -> when dj recives the request check for this token in db -> we'll be passing token in which ever client library - JS(fetch) we're using
