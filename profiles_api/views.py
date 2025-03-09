@@ -5,6 +5,8 @@ from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
 from rest_framework import filters
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.settings import api_settings
 
 from profiles_api import models
 from profiles_api import permissions
@@ -168,3 +170,14 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     # , added to make it a tuple
     search_fields = ('name','email',)
     #search_fields - list of fields that we want to enable search on
+
+class UserLoginApiView(ObtainAuthToken):
+    """Handle creating user authentication tokens"""
+    #ObtainAuthToken - standard view provided by djrestfmwk
+    # that we can add to our api to provide a login endpoint
+    # To make it visible in admin website
+    
+    renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+    
+    #renderer_classes - standard setting provided by djrestfmwk
+    # to enable the view to be rendered in the browser

@@ -56,3 +56,9 @@ http://127.0.0.1/ -> local host address
 20. create a view set to access a serializer through end point -> ModelViewSet
 21. Register it with url
 22. Test this
+23. Create Premission Class -> any user can change other profiles -> must be authenticated -> restrict useres -> using dj permisssion class ->  import permissions module from rest fwk -> done
+24. Configure viewset to use this permissions -> TokenAuthentication from drf -> for user to authenticate with our api -> genereate a random token string and get added whenever the request is made -> import permissions module
+25. Test new permissions
+26. Ability to search profiles -> filter -> import filters -> done
+27. Test Searching Profiles -> ? - to signify first get parameter **?search=Mark**
+28. Adding a Login Functionality -> using TokenAuthnetication -> including tokens in headers while request is made -> add a endpoint to our api that allows you to generate a auth Token -> import ObtainAuthToken -> import apisetttings from 
