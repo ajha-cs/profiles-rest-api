@@ -22,3 +22,5 @@ http://127.0.0.1/ -> local host address
     13.2. All steps req. to create our model
     13.3. Run our migration -> python manage.py migrate -> run all migrations -> create
     all required models -> auth system, tables in our db
+14. Creating our superuser -> enabling django admin -> tool to create admin website for your project and let us manage (inspect-modify) our db models -> create a superuser -> python mnanage.py createsuperuser
+15. Enabel django-admin for our user profile model (by deafult on for all new projects) -> need to register for new models -> to use django-admin for our user profile model -> go to admin .py (auto created while new app is created)
