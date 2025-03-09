@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.authentication import TokenAuthentication
+from rest_framework import filters
 
 from profiles_api import models
 from profiles_api import permissions
@@ -162,4 +163,8 @@ class UserProfileViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.UpdateOwnProfile,)
     #we can add multiple authentication classes
     #created as tuple , is added - multiple authentication classes
-    #ModelViewSet - standard viewset that automatically generates list, create, retrieve, update, partial_update, destroy
+    #ModelViewSet - standard viewset that automatically generates list, create, retrieve, update, partial_update, destroy    
+    filter_backends = (filters.SearchFilter,)
+    # , added to make it a tuple
+    search_fields = ('name','email',)
+    #search_fields - list of fields that we want to enable search on
