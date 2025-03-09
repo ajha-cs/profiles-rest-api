@@ -24,3 +24,15 @@ http://127.0.0.1/ -> local host address
     all required models -> auth system, tables in our db
 14. Creating our superuser -> enabling django admin -> tool to create admin website for your project and let us manage (inspect-modify) our db models -> create a superuser -> python mnanage.py createsuperuser
 15. Enabel django-admin for our user profile model (by deafult on for all new projects) -> need to register for new models -> to use django-admin for our user profile model -> go to admin .py (auto created while new app is created)
+16. 3 sections -> 3 apps -> authtoken app (comes out of djangorest fwmrk) -> authentication and authorization (comes out of django) -> profiles_api app (with the models we define -- we can override this behavior too) 
+17. API Views -> dj rest frmwrk offers couple of helper classes to create our api endpoints
+    17.1. APIView -> most basic view to build our api -> describe logic to make api endpoints -> apiview (allow us to define the func that matches the standard HTTP method - GET, PUT, POST, PATCH, DELETE) -> allows us to customise the function for each HTTP on api url -> most control ovr the logic -> perfect for implementing the complex logic -> like calling other apis or working with local files -> USE - 
+    1. Need full control over logic - complex logic, update multiple data sources in one api call
+    2. processing files and rendering a synchronous response
+    3. Calling ohther apis and service
+    4. Accessing local files or data 
+    5. API View is set
+    6. Let's wire this up to the url in django -> urls.py in root project directory -> entrypoint for every urls -> admin/ (created by default) -> looks up url and matche s with first url it finds -> admin.site.url -> connects url with admin app 
+    7. for our profiles_api -> new urls.py -> import path -> import views -> urlpatterns
+    vs 
+    17.2. ViewSet 
