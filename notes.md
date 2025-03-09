@@ -11,3 +11,14 @@ deactivate
 8. Server start kr diya -> python manage.py runserver 0.0.0.0:8000
 0.0.0.0 -> means available to all n/w adaptors of our server
 8000 -> port no. -> same in settings.py
+http://127.0.0.1/ -> local host address
+9. models reqd. to describe data -> django uses this model -> to store our data -> each model in django maps to db
+10. Create our user db model -> our own custom model (there is default model)
+11. SuperUser -> command in cli to add superuser (admin - full control can see all the models in db)
+12. configure django for custom user model -> settings.py -> AUTH_USER_MODEL = 'profiles_api.UserProfile'
+13. create django Migration file -> to manage our db -> have steps reqd. to make matches with db and our django model -> create a migration file for our model ->
+    13.0. first activate the venv
+    13.1. create a migration file -> python manage.py makemigrations profiles_api
+    13.2. All steps req. to create our model
+    13.3. Run our migration -> python manage.py migrate -> run all migrations -> create
+    all required models -> auth system, tables in our db
