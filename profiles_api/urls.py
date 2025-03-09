@@ -11,6 +11,8 @@ router = DefaultRouter()
 #3. base_name - optional - used to refer to the url in our code - 
 # used to retrieve urls in our router
 router.register('hello-viewset', views.HelloViewSet, basename='hello-viewset')
+router.register('profile',views.UserProfileViewSet)
+# no need to pass basename bcoz we have queryset in the viewset -> drf can figure out the name
 
 urlpatterns = [
     path('hello-view/', views.HelloApiView.as_view()),

@@ -3,6 +3,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.authentication import TokenAuthentication
+
+from profiles_api import models
+from profiles_api import permissions
 #status - list of handy http status codes
 # 200 - ok
 # 201 - created
@@ -147,3 +151,15 @@ class HelloViewSet(viewsets.ViewSet):
         """Handle removing an object"""
         
         return Response({'method':'DELETE'})
+    
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating profiles"""
+    
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
+    #queryset - list of objects that we want to manage
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (permissions.UpdateOwnProfile,)
+    #we can add multiple authentication classes
+    #created as tuple , is added - multiple authentication classes
+    #ModelViewSet - standard viewset that automatically generates list, create, retrieve, update, partial_update, destroy

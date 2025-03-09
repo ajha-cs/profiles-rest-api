@@ -48,5 +48,11 @@ http://127.0.0.1/ -> local host address
     4. working with standard database structure
     5. create HelloViewSet class -> import viewsets from restfwk -> done
     6. set url to point our viewset -> different from apiview -> viewsets - it calls a Router class provided by djrestfmwk to generate different routes available for our viewset -> import include from django.urls -> includeing list of url in url_patterns -> import DefaultRouter restfmwk.routers -> then create a object and register the viewset for the same.
-    7. serializer class -> same one can be used 
+    7. serializer class -> same one can be used -> used in post request -> serializer_class -> self.serializer_class -> validate 
     8. add retrieve, update ... func
+    9. No put, patch, delete method here on viewset api -> bcoz viewset expect that we'll use this end point to retrieve a list of objects in the db -> we'll specify pk to make changes -> add something after url - for eg: /id:201
+18. Create a serializzer for user profile object
+19. **model serializzers** -> extra functionality -> import models to aces user profile model -> use a meta class to configure serializer to point our model -> fields - tuple
+20. create a view set to access a serializer through end point -> ModelViewSet
+21. Register it with url
+22. Test this
