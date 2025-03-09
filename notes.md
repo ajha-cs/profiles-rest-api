@@ -34,5 +34,11 @@ http://127.0.0.1/ -> local host address
     5. API View is set
     6. Let's wire this up to the url in django -> urls.py in root project directory -> entrypoint for every urls -> admin/ (created by default) -> looks up url and matche s with first url it finds -> admin.site.url -> connects url with admin app 
     7. for our profiles_api -> new urls.py -> import path -> import views -> urlpatterns
+    8. Add a **serializer** to the view -> from djrestfmwk allows you to convert data inputs into python object and vice versa - just like django forms 
+    9. create new file serializers.py -> import serialisers -> used it while post/update requeest
+    10. Add POST method to API View
+    11. Test Post function 
+    12. PUT, Patch - Raw data in pg, Delete
+    13. 
     vs 
     17.2. ViewSet 
